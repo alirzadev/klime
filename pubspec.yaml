@@ -15,6 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_spinkit: ^4.0.0
   font_awesome_flutter: ^8.11.0
+  flutter_circular_chart: ^0.1.0
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +35,8 @@ flutter:
         - asset: fonts/Poppins-Regular.otf
         - asset: fonts/Poppins-Bold.otf
           weight: 700
+        - asset: fonts/Poppins-Medium.otf
+          weight: 200
         - asset: fonts/Poppins-Light.otf
           weight: 100
   #   - family: Trajan Pro
