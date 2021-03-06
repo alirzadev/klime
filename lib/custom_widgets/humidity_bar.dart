@@ -8,7 +8,7 @@ final GlobalKey<AnimatedCircularChartState> _chartKey =
 class HumidityBar extends StatefulWidget {
   final double currentHumidity;
 
-  HumidityBar({this.currentHumidity});
+  HumidityBar({@required this.currentHumidity});
 
   @override
   _HumidityBarState createState() => _HumidityBarState();
@@ -22,7 +22,9 @@ class _HumidityBarState extends State<HumidityBar> {
   @override
   void initState() {
     super.initState();
-    updateBarValues(widget.currentHumidity);
+    setState(() {
+      updateBarValues(widget.currentHumidity);
+    });
   }
 
   void updateBarValues(double currentHumidity) {

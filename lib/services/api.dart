@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:klime/services/api_keys.dart';
 
 class API {
@@ -7,7 +7,7 @@ class API {
 
   API({@required this.apiKey, @required this.path});
 
-  factory API.sandbox() => API(apiKey: ApiKeys.apiKey);
+  factory API.sandbox() => API(apiKey: ApiKeys.apiKey, path: '');
 
   static const String host = 'api.openweathermap.org';
 

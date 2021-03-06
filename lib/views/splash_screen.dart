@@ -12,8 +12,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    //..........................................................................
-    Future.delayed(Duration(seconds: 2)).then((_) => Nav.homepage(context));
+    getLocationData();
+  }
+
+  void getLocationData() async {
+    // Location().getLocation();
+    Nav.homepage(context);
   }
 
   @override

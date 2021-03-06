@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.10.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -16,6 +16,7 @@ dependencies:
   flutter_spinkit: ^4.0.0
   font_awesome_flutter: ^8.11.0
   flutter_circular_chart: ^0.1.0
+  geolocator: ^6.0.0
 
 dev_dependencies:
   flutter_test:
