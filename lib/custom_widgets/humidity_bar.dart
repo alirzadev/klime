@@ -52,7 +52,7 @@ class _HumidityBarState extends State<HumidityBar> {
         SizedBox(height: 2.0),
         AnimatedCircularChart(
           key: _chartKey,
-          size: Size(130.0, 130.0),
+          size: Size(125.0, 130.0),
           initialChartData: <CircularStackEntry>[
             CircularStackEntry(
               <CircularSegmentEntry>[
