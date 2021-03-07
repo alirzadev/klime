@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:klime/components/app_colors.dart';
 import 'package:klime/nav.dart';
+import 'package:klime/services/location.dart';
+import 'package:klime/services/networking.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -16,7 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void getLocationData() async {
-    // Location().getLocation();
+    await Location().getLocation();
+    NetworkHelper networkHelper = NetworkHelper(longitude: 31, latitude: 71);
+    await networkHelper.getData();
     Nav.homepage(context);
   }
 

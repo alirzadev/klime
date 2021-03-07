@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:klime/services/api_keys.dart';
+import 'package:flutter/cupertino.dart';
 
 class API {
-  final String apiKey;
-  final String path;
+  final String query;
 
-  API({@required this.apiKey, @required this.path});
+  API({@required this.query});
 
-  factory API.sandbox() => API(apiKey: ApiKeys.apiKey, path: '');
-
-  static const String host = 'api.openweathermap.org';
+  String host = 'api.openweathermap.org';
+  String path = 'data/2.5/weather';
 
   Uri currentWeatherUri() => Uri(
         scheme: 'https',
         host: host,
         path: path,
+        query: query,
       );
 }
