@@ -6,7 +6,7 @@ final GlobalKey<AnimatedCircularChartState> _chartKey =
     new GlobalKey<AnimatedCircularChartState>();
 
 class HumidityBar extends StatefulWidget {
-  final double currentHumidity;
+  final int currentHumidity;
 
   HumidityBar({@required this.currentHumidity});
 
@@ -27,9 +27,10 @@ class _HumidityBarState extends State<HumidityBar> {
     });
   }
 
-  void updateBarValues(double currentHumidity) {
-    currentBarValue = currentHumidity;
-    subtotalBarValue = 100 - currentHumidity;
+  void updateBarValues(int currentHumidity) {
+    double humidityToDouble = currentHumidity.toDouble();
+    currentBarValue = humidityToDouble;
+    subtotalBarValue = 100 - humidityToDouble;
     holeLabel = currentHumidity.toInt();
     print(holeLabel);
   }

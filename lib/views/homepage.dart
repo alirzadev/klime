@@ -2,13 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:klime/components/app_colors.dart';
 import 'package:klime/custom_widgets/humidity_bar.dart';
+import 'package:klime/model/current_weather_model.dart';
+
+extension CapExtension on String {
+  String get inCaps => '${this[0].toUpperCase()}${this.substring(1)}';
+  String get capitalizeFirstOfEach =>
+      this.split(" ").map((str) => str.inCaps).join(" ");
+}
 
 class HomePage extends StatefulWidget {
+  final CurrentWeatherModel weatherModel;
+
+  HomePage({@required this.weatherModel});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  int temperature;
+  String locationName;
+  String weatherDescription;
+  int humidity;
+  double tempFeelsLike;
+  double windSpeed;
+  IconData icon;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '21',
+                            '${this.temperature}',
                             style: TextStyle(
                               fontSize: 56,
                               color: AppColors.white,
@@ -50,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                           SizedBox(width: 32.0),
                           FaIcon(
-                            FontAwesomeIcons.rainbow,
+                            this.icon,
                             size: 80,
                             color: AppColors.white,
                           ),
@@ -60,14 +79,15 @@ class _HomePageState extends State<HomePage> {
                       Column(
                         children: [
                           Text(
-                            'Lahore',
+                            '${this.locationName}',
                             style: TextStyle(
                               fontSize: 16,
                               color: AppColors.white,
                             ),
                           ),
+                          SizedBox(height: 2.0),
                           Text(
-                            'Haze',
+                            '${this.weatherDescription.capitalizeFirstOfEach}',
                             style: TextStyle(
                               color: AppColors.white.withOpacity(0.5),
                             ),
@@ -91,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            HumidityBar(currentHumidity: 67.4),
+                            HumidityBar(currentHumidity: this.humidity),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -107,9 +127,9 @@ class _HomePageState extends State<HomePage> {
                                               AppColors.white.withOpacity(0.5),
                                         ),
                                       ),
-                                      SizedBox(width: 37.0),
+                                      SizedBox(width: 34.0),
                                       Text(
-                                        '32\u00B0',
+                                        '${this.tempFeelsLike.toInt()}\u00B0',
                                         style: TextStyle(
                                           height: 0.0,
                                           color: AppColors.white,
@@ -120,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 SizedBox(height: 20.0),
                                 Container(
-                                  width: 140.0,
+                                  width: 145.0,
                                   child: Row(
                                     children: [
                                       Text(
@@ -133,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       SizedBox(width: 15.0),
                                       Text(
-                                        '14 km',
+                                        '${this.windSpeed} km',
                                         style: TextStyle(
                                           height: 0.0,
                                           color: AppColors.white,
@@ -156,5 +176,21 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _updateUI();
+  }
+
+  void _updateUI() {
+    this.temperature = widget.weatherModel.temperature;
+    this.locationName = widget.weatherModel.locationName;
+    this.weatherDescription = widget.weatherModel.weatherDescription;
+    this.humidity = widget.weatherModel.humidity;
+    this.tempFeelsLike = widget.weatherModel.tempFeelsLike;
+    this.windSpeed = widget.weatherModel.windSpeed;
+    this.icon = widget.weatherModel.icon;
   }
 }
