@@ -25,14 +25,28 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Container(
+      width: width,
+      height: height,
       color: AppColors.darkGrey,
-      child: Center(
-        child: SpinKitRipple(
-          color: AppColors.white,
-          size: 100.0,
-          borderWidth: 3.0,
-        ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(child: SizedBox(height: 5)),
+          SizedBox(height: 60.0),
+          Image.asset('images/klimeLogo.png', width: 2 * width / 5),
+          Expanded(child: SizedBox(height: 5)),
+          SpinKitRipple(
+            color: AppColors.white,
+            size: 60.0,
+            borderWidth: 3.0,
+          ),
+          SizedBox(height: 60.0),
+        ],
       ),
     );
   }
