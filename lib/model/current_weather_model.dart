@@ -27,15 +27,36 @@ class CurrentWeatherModel {
     Location location = Location();
     await location.getLocation();
     // print('${location.latitude}===============${location.longitude}');
-
     NetworkHelper networkHelper = NetworkHelper(
       longitude: location.longitude,
       latitude: location.latitude,
     );
-    Response response = await networkHelper.getResponseData();
-    // print('this is the response coming from weather model $response');
-    var data = response.data;
-    var icon = _getWeatherIcon(data['weather'][0]['description']);
+
+    Response response;
+    var data;
+    IconData icon;
+
+    try {
+      response = await networkHelper.getResponseData();
+      // print('this is the response coming from weather model $response');
+      data = response.data;
+      icon = _getWeatherIcon(data['weather'][0]['description']);
+    } catch (e) {
+      print(
+          'Exception caught in WeatherModel getCurrentWeather function as $e');
+    }
+
+    if (response.statusCode != 200) {
+      CurrentWeatherModel(
+        temperature: 0,
+        locationName: 'Unknown',
+        weatherDescription: 'Unknown',
+        humidity: 0,
+        tempFeelsLike: 0,
+        windSpeed: 0,
+        icon: icon,
+      );
+    }
 
     // print(data);
     return CurrentWeatherModel(
@@ -141,23 +162,3 @@ class CurrentWeatherModel {
     },
   ];
 }
-
-//
-//
-//
-// class WeatherModel {
-//   Future<dynamic> getLocationWeather() async {
-//     Location location = Location();
-//     await location.getLocation();
-//
-//     NetworkHelper networkHelper = NetworkHelper(
-//         url:
-//         '$openWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$apiKey&units=metric');
-//
-//     var weatherData = await networkHelper.getResponseData();
-//     // print(weatherData);
-//     return weatherData;
-//   }
-//
-//
-// }

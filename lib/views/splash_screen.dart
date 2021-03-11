@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:klime/components/app_colors.dart';
 import 'package:klime/model/current_weather_model.dart';
 import 'package:klime/nav.dart';
+import 'package:klime/services/permissions_checker.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -17,9 +21,14 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void getLocationData() async {
+    if (await PermissionsChecker.checkInternet() == false) {
+      Future.delayed(Duration(seconds: 2)).then((_) {
+        Fluttertoast.showToast(msg: 'No Internet', gravity: ToastGravity.TOP);
+        SystemNavigator.pop(animated: true);
+      });
+    }
     CurrentWeatherModel weatherModel;
     weatherModel = await CurrentWeatherModel().getCurrentWeather();
-    // print('this is the weather model coming from SPLASHSCREEN$weatherModel');
     Nav.homepage(context, weatherModel);
   }
 

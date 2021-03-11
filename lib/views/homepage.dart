@@ -216,13 +216,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _updateUI() {
-    this.temperature = widget.weatherModel.temperature;
-    this.locationName = widget.weatherModel.locationName;
-    this.weatherDescription = widget.weatherModel.weatherDescription;
-    this.humidity = widget.weatherModel.humidity;
-    this.tempFeelsLike = widget.weatherModel.tempFeelsLike;
-    this.windSpeed = widget.weatherModel.windSpeed;
-    this.icon = widget.weatherModel.icon;
+      this.temperature = widget.weatherModel.temperature;
+      this.locationName = widget.weatherModel.locationName;
+      this.weatherDescription = widget.weatherModel.weatherDescription;
+      this.humidity = widget.weatherModel.humidity;
+      this.tempFeelsLike = widget.weatherModel.tempFeelsLike;
+      this.windSpeed = widget.weatherModel.windSpeed;
+      this.icon = widget.weatherModel.icon;
   }
 
   void _onRefresh() async {

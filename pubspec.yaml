@@ -19,6 +19,9 @@ dependencies:
   geolocator: ^6.0.0
   dio: ^3.0.10
   pull_to_refresh: 1.6.3
+  connectivity: 2.0.2
+  fluttertoast: ^7.1.8
+#  permission_handler: 6.0.1+1
 
 dev_dependencies:
   flutter_test:
