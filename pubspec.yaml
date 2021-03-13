@@ -21,6 +21,7 @@ dependencies:
   pull_to_refresh: 1.6.3
   connectivity: 2.0.2
   fluttertoast: ^7.1.8
+  fl_chart: 0.12.3
 #  permission_handler: 6.0.1+1
 
 dev_dependencies:
