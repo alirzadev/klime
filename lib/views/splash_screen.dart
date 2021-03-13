@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:klime/components/app_colors.dart';
 import 'package:klime/model/current_weather_model.dart';
 import 'package:klime/nav.dart';
 import 'package:klime/services/permissions_checker.dart';
+
+import '../services/location.dart';
+import '../services/networking.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -17,10 +19,16 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    getLocationData();
+    getData();
   }
 
-  void getLocationData() async {
+  void getData() async {
+    Location loc = Location();
+    await loc.getLocation();
+    NetworkHelper net =
+        NetworkHelper(longitude: loc.longitude, latitude: loc.latitude);
+    net.getWeeklyForecastResponseData();
+
     if (await PermissionsChecker.checkInternet() == false) {
       Future.delayed(Duration(seconds: 2)).then((_) {
         Fluttertoast.showToast(msg: 'No Internet', gravity: ToastGravity.TOP);

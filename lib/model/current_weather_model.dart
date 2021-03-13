@@ -37,7 +37,7 @@ class CurrentWeatherModel {
     IconData icon;
 
     try {
-      response = await networkHelper.getResponseData();
+      response = await networkHelper.getCurrentWeatherResponseData();
       // print('this is the response coming from weather model $response');
       data = response.data;
       icon = _getWeatherIcon(data['weather'][0]['description']);

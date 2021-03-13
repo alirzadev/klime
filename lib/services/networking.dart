@@ -9,7 +9,7 @@ class NetworkHelper {
 
   NetworkHelper({@required this.longitude, this.latitude});
 
-  Future<dynamic> getResponseData() async {
+  Future<dynamic> getCurrentWeatherResponseData() async {
     try {
       String query =
           'lat=${this.latitude}&lon=${this.longitude}&appid=${ApiKeys.apiKey}&units=metric';
@@ -18,6 +18,20 @@ class NetworkHelper {
       Response response = await Dio().getUri(api.currentWeatherUri());
       // print(api.currentWeatherUri());
       // print('this is the response $response');
+      return response;
+    } catch (e) {
+      print('this is the exception $e');
+    }
+  }
+
+  Future<dynamic> getWeeklyForecastResponseData() async {
+    try {
+      String query =
+          'lat=${this.latitude}&lon=${this.longitude}&exclude=minutely,hourly&appid=${ApiKeys.apiKey}&units=metric';
+
+      API api = API(query: query);
+      Response response = await Dio().getUri(api.weeklyWeatherUri());
+
       return response;
     } catch (e) {
       print('this is the exception $e');
