@@ -6,35 +6,35 @@ import '../components/app_colors.dart';
 
 class WeeklyForecastChart extends StatefulWidget {
   final double date1;
-  final double temp1;
+  final double dayTemp1;
   final double date2;
-  final double temp2;
+  final double dayTemp2;
   final double date3;
-  final double temp3;
+  final double dayTemp3;
   final double date4;
-  final double temp4;
+  final double dayTemp4;
   final double date5;
-  final double temp5;
+  final double dayTemp5;
   final double date6;
-  final double temp6;
+  final double dayTemp6;
   final double date7;
-  final double temp7;
+  final double dayTemp7;
 
   WeeklyForecastChart({
     this.date1,
-    this.temp1,
+    this.dayTemp1,
     this.date2,
-    this.temp2,
+    this.dayTemp2,
     this.date3,
-    this.temp3,
+    this.dayTemp3,
     this.date4,
-    this.temp4,
+    this.dayTemp4,
     this.date5,
-    this.temp5,
+    this.dayTemp5,
     this.date6,
-    this.temp6,
+    this.dayTemp6,
     this.date7,
-    this.temp7,
+    this.dayTemp7,
   });
 
   @override
@@ -189,13 +189,13 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
   List<LineChartBarData> curvedChartData() {
     final LineChartBarData lineChartBarData3 = LineChartBarData(
       spots: [
-        FlSpot(1, widget.temp1),
-        FlSpot(2, widget.temp2),
-        FlSpot(3, widget.temp3),
-        FlSpot(4, widget.temp4),
-        FlSpot(5, widget.temp5),
-        FlSpot(6, widget.temp6),
-        FlSpot(7, widget.temp7),
+        FlSpot(1, widget.dayTemp1),
+        FlSpot(2, widget.dayTemp2),
+        FlSpot(3, widget.dayTemp3),
+        FlSpot(4, widget.dayTemp4),
+        FlSpot(5, widget.dayTemp5),
+        FlSpot(6, widget.dayTemp6),
+        FlSpot(7, widget.dayTemp7),
       ],
       isCurved: true,
       colors: const [AppColors.white],
@@ -298,13 +298,13 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
     return [
       LineChartBarData(
         spots: [
-          FlSpot(1, widget.temp1),
-          FlSpot(2, widget.temp2),
-          FlSpot(3, widget.temp3),
-          FlSpot(4, widget.temp4),
-          FlSpot(5, widget.temp5),
-          FlSpot(6, widget.temp6),
-          FlSpot(7, widget.temp7),
+          FlSpot(1, widget.dayTemp1),
+          FlSpot(2, widget.dayTemp2),
+          FlSpot(3, widget.dayTemp3),
+          FlSpot(4, widget.dayTemp4),
+          FlSpot(5, widget.dayTemp5),
+          FlSpot(6, widget.dayTemp6),
+          FlSpot(7, widget.dayTemp7),
         ],
         isCurved: true,
         curveSmoothness: 0,

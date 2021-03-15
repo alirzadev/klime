@@ -113,6 +113,10 @@ class CurrentWeatherModel {
       'icon': FontAwesomeIcons.pooStorm,
     },
     {
+      'condition': 'light rain',
+      'icon': FontAwesomeIcons.cloudRain,
+    },
+    {
       'condition': 'drizzle',
       'icon': FontAwesomeIcons.cloudRain,
     },
