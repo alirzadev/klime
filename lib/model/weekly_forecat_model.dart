@@ -4,10 +4,11 @@ import 'package:klime/services/networking.dart';
 
 class WeeklyForecastModel {
   double date;
-  int day;
-  double temperature;
+  String day;
+  double dayTemp;
+  double nightTemp;
 
-  WeeklyForecastModel({this.date, this.day, this.temperature});
+  WeeklyForecastModel({this.date, this.day, this.dayTemp, this.nightTemp});
 
   Future<List<WeeklyForecastModel>> getWeeklyForecast() async {
     Location location = Location();
@@ -37,13 +38,36 @@ class WeeklyForecastModel {
       for (int i = 1; i < 8; i++) {
         list.add(WeeklyForecastModel(
           date: (DateTime.now().day + i).toDouble(),
-          day: (DateTime.now().weekday + i),
-          temperature: data['daily'][i]['temp']['day'].toDouble(),
+          day: compareDays(DateTime.now().weekday + i),
+          dayTemp: data['daily'][i]['temp']['day'].toDouble(),
+          nightTemp: data['daily'][i]['temp']['night'].toDouble(),
         ));
+        // print('===========================${DateTime.now().weekday + i}');
         // print('========================================= ${list.length}');
       }
       return list;
     }
     return list;
+  }
+
+  String compareDays(int value) {
+    value = value % 7;
+    switch (value) {
+      case 1:
+        return 'Mon';
+      case 2:
+        return 'Tue';
+      case 3:
+        return 'Wed';
+      case 4:
+        return 'Thu';
+      case 5:
+        return 'Fri';
+      case 6:
+        return 'Sat';
+      case 0:
+        return 'Sun ';
+    }
+    return '';
   }
 }
