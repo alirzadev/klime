@@ -1,82 +1,102 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../components/app_colors.dart';
+
 class WeeklyForecastChart extends StatefulWidget {
+  final double date1;
+  final double temp1;
+  final double date2;
+  final double temp2;
+  final double date3;
+  final double temp3;
+  final double date4;
+  final double temp4;
+  final double date5;
+  final double temp5;
+  final double date6;
+  final double temp6;
+  final double date7;
+  final double temp7;
+
+  WeeklyForecastChart({
+    this.date1,
+    this.temp1,
+    this.date2,
+    this.temp2,
+    this.date3,
+    this.temp3,
+    this.date4,
+    this.temp4,
+    this.date5,
+    this.temp5,
+    this.date6,
+    this.temp6,
+    this.date7,
+    this.temp7,
+  });
+
   @override
   State<StatefulWidget> createState() => WeeklyForecastChartState();
 }
 
 class WeeklyForecastChartState extends State<WeeklyForecastChart> {
-  bool isShowingMainData;
+  bool _isShowingMainData;
 
   @override
   void initState() {
     super.initState();
-    isShowingMainData = true;
+    _isShowingMainData = true;
   }
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.23,
-      child: Stack(
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const SizedBox(
-                height: 37,
-              ),
-              const Text(
-                'Unfold Shop 2018',
-                style: TextStyle(
-                  color: Color(0xff827daa),
-                  fontSize: 16,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              const Text(
-                'Monthly Sales',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(
-                height: 37,
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16.0, left: 6.0),
-                  child: LineChart(
-                    isShowingMainData ? curvedChart() : pointsChart(),
-                    swapAnimationDuration: const Duration(milliseconds: 250),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.refresh,
-              color: Colors.white.withOpacity(isShowingMainData ? 1.0 : 0.5),
-            ),
+    return Stack(
+      children: [
+        Positioned(
+          left: -5,
+          top: -10,
+          child: IconButton(
             onPressed: () {
               setState(() {
-                isShowingMainData = !isShowingMainData;
+                _isShowingMainData = !_isShowingMainData;
               });
             },
-          )
-        ],
-      ),
+            icon: Icon(
+              Icons.flip,
+              size: 20,
+              color: Colors.white.withOpacity(_isShowingMainData ? 1.0 : 0.5),
+            ),
+            // constraints: BoxConstraints(maxWidth: 30),
+          ),
+        ),
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 25),
+              child: Text(
+                'Weekly Forecast',
+                style: TextStyle(
+                  color: AppColors.white,
+                  fontSize: 24,
+                  // fontWeight: FontWeight.w100,
+                ),
+              ),
+            ),
+            AspectRatio(
+              aspectRatio: 2.0,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16.0, left: 6.0),
+                child: LineChart(
+                  _isShowingMainData ? curvedChart() : pointsChart(),
+                  swapAnimationDuration: const Duration(milliseconds: 250),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -96,54 +116,56 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
-          getTextStyles: (value) => const TextStyle(
-            color: Color(0xff72719b),
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
+          getTextStyles: (value) => const TextStyle(color: AppColors.dimWhite),
           margin: 10,
           getTitles: (value) {
             switch (value.toInt()) {
+              case 1:
+                return '${widget.date1.toInt()}';
               case 2:
-                return 'SEPT';
+                return '${widget.date2.toInt()}';
+              case 3:
+                return '${widget.date3.toInt()}';
+              case 4:
+                return '${widget.date4.toInt()}';
+              case 5:
+                return '${widget.date5.toInt()}';
+              case 6:
+                return '${widget.date6.toInt()}';
               case 7:
-                return 'OCT';
-              case 12:
-                return 'DEC';
+                return '${widget.date7.toInt()}';
             }
             return '';
           },
         ),
         leftTitles: SideTitles(
           showTitles: true,
-          getTextStyles: (value) => const TextStyle(
-            color: Color(0xff75729e),
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
+          getTextStyles: (value) => const TextStyle(color: AppColors.dimWhite),
           getTitles: (value) {
             switch (value.toInt()) {
-              case 1:
-                return '1m';
-              case 2:
-                return '2m';
-              case 3:
-                return '3m';
-              case 4:
-                return '5m';
+              case 10:
+                return '10';
+              case 20:
+                return '20';
+              case 30:
+                return '30';
+              case 40:
+                return '40';
+              case 50:
+                return '50';
             }
             return '';
           },
-          margin: 8,
-          reservedSize: 30,
+          margin: 10,
+          reservedSize: 20,
         ),
       ),
       borderData: FlBorderData(
         show: true,
         border: const Border(
           bottom: BorderSide(
-            color: Color(0xff4e4965),
-            width: 4,
+            color: AppColors.dimWhite,
+            width: 1,
           ),
           left: BorderSide(
             color: Colors.transparent,
@@ -157,8 +179,8 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
         ),
       ),
       minX: 0,
-      maxX: 14,
-      maxY: 4,
+      maxX: 8,
+      maxY: 55,
       minY: 0,
       lineBarsData: curvedChartData(),
     );
@@ -167,17 +189,17 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
   List<LineChartBarData> curvedChartData() {
     final LineChartBarData lineChartBarData3 = LineChartBarData(
       spots: [
-        FlSpot(1, 2.8),
-        FlSpot(3, 1.9),
-        FlSpot(6, 3),
-        FlSpot(10, 1.3),
-        FlSpot(13, 2.5),
+        FlSpot(1, widget.temp1),
+        FlSpot(2, widget.temp2),
+        FlSpot(3, widget.temp3),
+        FlSpot(4, widget.temp4),
+        FlSpot(5, widget.temp5),
+        FlSpot(6, widget.temp6),
+        FlSpot(7, widget.temp7),
       ],
       isCurved: true,
-      colors: const [
-        Color(0xff27b6fc),
-      ],
-      barWidth: 8,
+      colors: const [AppColors.white],
+      barWidth: 5,
       isStrokeCapRound: true,
       dotData: FlDotData(
         show: false,
@@ -203,56 +225,56 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
-          getTextStyles: (value) => const TextStyle(
-            color: Color(0xff72719b),
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
+          getTextStyles: (value) => const TextStyle(color: AppColors.dimWhite),
           margin: 10,
           getTitles: (value) {
             switch (value.toInt()) {
+              case 1:
+                return '${widget.date1.toInt()}';
               case 2:
-                return 'SEPT';
+                return '${widget.date2.toInt()}';
+              case 3:
+                return '${widget.date3.toInt()}';
+              case 4:
+                return '${widget.date4.toInt()}';
+              case 5:
+                return '${widget.date5.toInt()}';
+              case 6:
+                return '${widget.date6.toInt()}';
               case 7:
-                return 'OCT';
-              case 12:
-                return 'DEC';
+                return '${widget.date7.toInt()}';
             }
             return '';
           },
         ),
         leftTitles: SideTitles(
           showTitles: true,
-          getTextStyles: (value) => const TextStyle(
-            color: Color(0xff75729e),
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
+          getTextStyles: (value) => const TextStyle(color: AppColors.dimWhite),
           getTitles: (value) {
             switch (value.toInt()) {
-              case 1:
-                return '1m';
-              case 2:
-                return '2m';
-              case 3:
-                return '3m';
-              case 4:
-                return '5m';
-              case 5:
-                return '6m';
+              case 10:
+                return '10';
+              case 20:
+                return '20';
+              case 30:
+                return '30';
+              case 40:
+                return '40';
+              case 50:
+                return '50';
             }
             return '';
           },
-          margin: 8,
-          reservedSize: 30,
+          margin: 10,
+          reservedSize: 20,
         ),
       ),
       borderData: FlBorderData(
           show: true,
           border: const Border(
             bottom: BorderSide(
-              color: Color(0xff4e4965),
-              width: 4,
+              color: AppColors.dimWhite,
+              width: 1,
             ),
             left: BorderSide(
               color: Colors.transparent,
@@ -265,8 +287,8 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
             ),
           )),
       minX: 0,
-      maxX: 14,
-      maxY: 6,
+      maxX: 8,
+      maxY: 50,
       minY: 0,
       lineBarsData: pointsChartData(),
     );
@@ -276,17 +298,17 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
     return [
       LineChartBarData(
         spots: [
-          FlSpot(1, 3.8),
-          FlSpot(3, 1.9),
-          FlSpot(6, 5),
-          FlSpot(10, 3.3),
-          FlSpot(13, 4.5),
+          FlSpot(1, widget.temp1),
+          FlSpot(2, widget.temp2),
+          FlSpot(3, widget.temp3),
+          FlSpot(4, widget.temp4),
+          FlSpot(5, widget.temp5),
+          FlSpot(6, widget.temp6),
+          FlSpot(7, widget.temp7),
         ],
         isCurved: true,
         curveSmoothness: 0,
-        colors: const [
-          Color(0x4427b6fc),
-        ],
+        colors: const [AppColors.lightPink],
         barWidth: 2,
         isStrokeCapRound: true,
         dotData: FlDotData(show: true),

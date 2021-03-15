@@ -23,12 +23,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void getData() async {
-    Location loc = Location();
-    await loc.getLocation();
-    NetworkHelper net =
-        NetworkHelper(longitude: loc.longitude, latitude: loc.latitude);
-    net.getWeeklyForecastResponseData();
-
     if (await PermissionsChecker.checkInternet() == false) {
       Future.delayed(Duration(seconds: 2)).then((_) {
         Fluttertoast.showToast(msg: 'No Internet', gravity: ToastGravity.TOP);

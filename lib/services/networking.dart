@@ -31,7 +31,7 @@ class NetworkHelper {
 
       API api = API(query: query);
       Response response = await Dio().getUri(api.weeklyWeatherUri());
-
+      // print(api.weeklyWeatherUri());
       return response;
     } catch (e) {
       print('this is the exception $e');
