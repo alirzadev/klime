@@ -50,7 +50,7 @@ class _WeeklyForecastPageState extends State<WeeklyForecastPage> {
             : Column(
                 // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(height: 40),
+                  SizedBox(height: 45),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: WeeklyForecastChart(
@@ -70,11 +70,11 @@ class _WeeklyForecastPageState extends State<WeeklyForecastPage> {
                       dayTemp7: _list[6].dayTemp,
                     ),
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Divider(
-                      thickness: .5,
+                      thickness: .25,
                       color: AppColors.dimWhite.withOpacity(.25),
                     ),
                   ),

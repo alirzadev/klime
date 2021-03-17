@@ -80,7 +80,6 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
                 style: TextStyle(
                   color: AppColors.white,
                   fontSize: 24,
-                  // fontWeight: FontWeight.w100,
                 ),
               ),
             ),
@@ -134,6 +133,8 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
                 return '${widget.date6.toInt()}';
               case 7:
                 return '${widget.date7.toInt()}';
+              // case 8:
+              //   return '(${compareMonth(DateTime.now().month)})';
             }
             return '';
           },
@@ -143,6 +144,8 @@ class WeeklyForecastChartState extends State<WeeklyForecastChart> {
           getTextStyles: (value) => const TextStyle(color: AppColors.dimWhite),
           getTitles: (value) {
             switch (value.toInt()) {
+              // case 0:
+              //   return '(\u00B0C)';
               case 10:
                 return '10';
               case 20:

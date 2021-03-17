@@ -7,9 +7,6 @@ import 'package:klime/model/current_weather_model.dart';
 import 'package:klime/nav.dart';
 import 'package:klime/services/permissions_checker.dart';
 
-import '../services/location.dart';
-import '../services/networking.dart';
-
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();

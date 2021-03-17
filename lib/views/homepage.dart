@@ -64,12 +64,12 @@ class _HomePageState extends State<HomePage> {
         onRefresh: _onRefresh,
         onLoading: _onLoading,
         child: SafeArea(
-          child: Stack(
+          child: Column(
             children: [
               Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 10.0, right: 15.0),
+                  padding: const EdgeInsets.only(top: 5, right: 12),
                   child: IconButton(
                     onPressed: () {
                       Nav.weeklyForecastPage(context);
@@ -82,148 +82,140 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(bottom: 15.0),
-                        child: Column(
-                          children: [
-                            const Expanded(child: SizedBox(height: 10.0)),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  '${this.temperature}',
-                                  style: TextStyle(
-                                    fontSize: 56,
-                                    color: AppColors.white,
-                                    fontWeight: FontWeight.w200,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      bottom: 28.0, left: 5.0),
-                                  child: Text(
-                                    '\u00B0',
-                                    style: TextStyle(
-                                      fontSize: 32,
-                                      color: AppColors.white,
-                                      fontWeight: FontWeight.w100,
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(width: 32.0),
-                                FaIcon(
-                                  this.icon,
-                                  size: 80,
-                                  color: AppColors.white,
-                                ),
-                              ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      bottom: 15.0, left: 25.0, right: 25.0),
+                  child: Column(
+                    children: [
+                      const Expanded(child: SizedBox(height: 10.0)),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${this.temperature}',
+                            style: TextStyle(
+                              fontSize: 56,
+                              color: AppColors.white,
+                              fontWeight: FontWeight.w200,
                             ),
-                            const Expanded(child: SizedBox(height: 10.0)),
-                            Column(
-                              children: [
-                                Text(
-                                  '${this.locationName}',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: AppColors.white,
-                                  ),
-                                ),
-                                SizedBox(height: 2.0),
-                                Text(
-                                  '${this.weatherDescription.capitalizeFirstOfEach}',
-                                  style: TextStyle(
-                                    color: AppColors.white.withOpacity(0.5),
-                                  ),
-                                ),
-                              ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(bottom: 28.0, left: 5.0),
+                            child: Text(
+                              '\u00B0',
+                              style: TextStyle(
+                                fontSize: 32,
+                                color: AppColors.white,
+                                fontWeight: FontWeight.w100,
+                              ),
                             ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(width: 32.0),
+                          FaIcon(
+                            this.icon,
+                            size: 80,
+                            color: AppColors.white,
+                          ),
+                        ],
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 15.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      const Expanded(flex: 2, child: SizedBox(height: 10.0)),
+                      Column(
+                        children: [
+                          Text(
+                            '${this.locationName}',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: AppColors.white,
+                            ),
+                          ),
+                          SizedBox(height: 2.0),
+                          Text(
+                            '${this.weatherDescription.capitalizeFirstOfEach}',
+                            style: TextStyle(
+                              color: AppColors.white.withOpacity(0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 15.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  HumidityBar(currentHumidity: this.humidity),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                            HumidityBar(currentHumidity: this.humidity),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 140.0,
+                                  child: Row(
                                     children: [
-                                      Container(
-                                        width: 140.0,
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              'Feel Like:',
-                                              style: TextStyle(
-                                                height: 0.0,
-                                                color: AppColors.white
-                                                    .withOpacity(0.5),
-                                              ),
-                                            ),
-                                            SizedBox(width: 34.0),
-                                            Text(
-                                              '${this.tempFeelsLike.toInt()}\u00B0',
-                                              style: TextStyle(
-                                                height: 0.0,
-                                                color: AppColors.white,
-                                              ),
-                                            ),
-                                          ],
+                                      Text(
+                                        'Feel Like:',
+                                        style: TextStyle(
+                                          height: 0.0,
+                                          color:
+                                              AppColors.white.withOpacity(0.5),
                                         ),
                                       ),
-                                      SizedBox(height: 20.0),
-                                      Container(
-                                        width: 160.0,
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              'Wind Speed:',
-                                              style: TextStyle(
-                                                height: 0.0,
-                                                color: AppColors.white
-                                                    .withOpacity(0.5),
-                                              ),
-                                            ),
-                                            SizedBox(width: 15.0),
-                                            Text(
-                                              '${this.windSpeed} km',
-                                              style: TextStyle(
-                                                height: 0.0,
-                                                color: AppColors.white,
-                                              ),
-                                            ),
-                                          ],
+                                      SizedBox(width: 34.0),
+                                      Text(
+                                        '${this.tempFeelsLike.toInt()}\u00B0',
+                                        style: TextStyle(
+                                          height: 0.0,
+                                          color: AppColors.white,
                                         ),
                                       ),
                                     ],
-                                  )
-                                ],
-                              ),
-                            ),
+                                  ),
+                                ),
+                                SizedBox(height: 20.0),
+                                Container(
+                                  width: 160.0,
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Wind Speed:',
+                                        style: TextStyle(
+                                          height: 0.0,
+                                          color:
+                                              AppColors.white.withOpacity(0.5),
+                                        ),
+                                      ),
+                                      SizedBox(width: 15.0),
+                                      Text(
+                                        '${this.windSpeed} km',
+                                        style: TextStyle(
+                                          height: 0.0,
+                                          color: AppColors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
