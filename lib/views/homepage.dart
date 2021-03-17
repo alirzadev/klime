@@ -146,12 +146,13 @@ class _HomePageState extends State<HomePage> {
               ),
               Expanded(
                 child: Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+                  padding: EdgeInsets.only(
+                      top: 10, bottom: 15.0, right: 25.0, left: 25.0),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Expanded(child: SizedBox(height: 10)),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15.0),
                         child: Row(
@@ -213,6 +214,41 @@ class _HomePageState extends State<HomePage> {
                             )
                           ],
                         ),
+                      ),
+                      Expanded(child: SizedBox(height: 10)),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'klimë v0.0.1',
+                            style: TextStyle(
+                              color: AppColors.white.withOpacity(.25),
+                              fontSize: 12,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          FaIcon(
+                            FontAwesomeIcons.github,
+                            size: 16,
+                            color: AppColors.white.withOpacity(.25),
+                          ),
+                          SizedBox(width: 10),
+                          FaIcon(
+                            FontAwesomeIcons.linkedinIn,
+                            size: 16,
+                            color: AppColors.white.withOpacity(.25),
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            '@alirzadev',
+                            style: TextStyle(
+                              color: AppColors.white.withOpacity(.25),
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
