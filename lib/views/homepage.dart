@@ -6,6 +6,7 @@ import 'package:klime/custom_widgets/humidity_bar.dart';
 import 'package:klime/model/current_weather_model.dart';
 import 'package:klime/nav.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 extension CapExtension on String {
   String get inCaps => '${this[0].toUpperCase()}${this.substring(1)}';
@@ -229,23 +230,39 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           SizedBox(width: 10),
-                          FaIcon(
-                            FontAwesomeIcons.github,
-                            size: 16,
-                            color: AppColors.white.withOpacity(.25),
-                          ),
-                          SizedBox(width: 10),
-                          FaIcon(
-                            FontAwesomeIcons.linkedinIn,
-                            size: 16,
-                            color: AppColors.white.withOpacity(.25),
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            '@alirzadev',
-                            style: TextStyle(
+                          InkWell(
+                            onTap: () {
+                              _launchURL('https://github.com/alirzadev/klime');
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.github,
+                              size: 16,
                               color: AppColors.white.withOpacity(.25),
-                              fontSize: 12,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {
+                              _launchURL(
+                                  'https://www.linkedin.com/in/alirzadev/');
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.linkedinIn,
+                              size: 16,
+                              color: AppColors.white.withOpacity(.25),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {
+                              _launchURL('https://devfolio-ce382.web.app/#/');
+                            },
+                            child: Text(
+                              '@alirzadev',
+                              style: TextStyle(
+                                color: AppColors.white.withOpacity(.25),
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],
@@ -293,5 +310,9 @@ class _HomePageState extends State<HomePage> {
         _updateUI();
       });
     _refreshController.loadComplete();
+  }
+
+  void _launchURL(String urlString) async {
+    await launch(urlString);
   }
 }

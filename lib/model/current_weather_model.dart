@@ -24,12 +24,19 @@ class CurrentWeatherModel {
   });
 
   Future<CurrentWeatherModel> getCurrentWeather() async {
+    // if (await GetStorage().getValues() == null) {
     Location location = Location();
-    await location.getLocation();
-    // print('${location.latitude}===============${location.longitude}');
+    // await location.getLocation();
+    // GetStorage().write('lon', location.longitude);
+    // GetStorage().write('lat', location.latitude);
+    // // }
+    // print('===================${GetStorage().getValues()}');
+    // final latitude = GetStorage().read('lat');
+    // final longitude = GetStorage().read('lat');
+    // print('$latitude===============$longitude');
     NetworkHelper networkHelper = NetworkHelper(
-      longitude: location.longitude,
-      latitude: location.latitude,
+      longitude: Location.longitude,
+      latitude: Location.latitude,
     );
 
     Response response;
@@ -76,7 +83,7 @@ class CurrentWeatherModel {
         return weatherIcons[i]['icon'];
       }
     }
-    return FontAwesomeIcons.bomb;
+    return FontAwesomeIcons.cloud;
   }
 
   var weatherIcons = [

@@ -11,7 +11,7 @@
 <!--    <uses-permission android:name="android"/>-->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="klime"
+        android:label="Klime"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

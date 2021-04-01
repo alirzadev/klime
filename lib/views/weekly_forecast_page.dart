@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:klime/custom_widgets/weekly_forecast_chart.dart';
 import 'package:klime/custom_widgets/weekly_forecast_list.dart';
 import 'package:klime/model/weekly_forecat_model.dart';
@@ -42,10 +43,10 @@ class _WeeklyForecastPageState extends State<WeeklyForecastPage> {
         // ),
         body: _isLoading
             ? Center(
-                child: CircularProgressIndicator(
-                  strokeWidth: 3,
-                  // backgroundColor: AppColors.white,
-                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.white),
+                child: SpinKitRipple(
+                  color: AppColors.white,
+                  size: 80.0,
+                  borderWidth: 3.0,
                 ),
               )
             : _list.length != 0
