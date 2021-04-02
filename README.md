@@ -1,16 +1,24 @@
-# klime
+<h1 align=
+"center">Klime🌤❄⚡  
+<img src="https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square">  
+</h1>
+<br>
+A weather forecast app consuming REST Api from <a href="https://openweathermap.org/api">OpenWeatherMap</a>
+<h2>🔥 Feature</h2>
+- Current weather prediction<br>
+- Weekly weather forecast<br>
+- Available on <a href="https://play.google.com/store/apps/details?id=com.flutter.klime">Play Store</a>
+<h2>📱 Screenshots</h2>
 
-A new Flutter application.
+|        Splash Screen           |         Homepage          |
+|:------------------------------:|:-------------------------:|
+| ![](https://github.com/alirzadev/klime/blob/master/screenshots/splash_screen.jpg) | ![](https://github.com/alirzadev/klime/blob/master/screenshots/home_page.jpg) |                               
 
-## Getting Started
+|        Graph 1           |         Graph 2          |
+|:------------------------------:|:-------------------------:|
+| ![](https://github.com/alirzadev/klime/blob/master/screenshots/weekly_weather_1.jpg) | ![](https://github.com/alirzadev/klime/blob/master/screenshots/weekly_weather_2.jpg) |
 
-This project is a starting point for a Flutter application.
+|            Klime Gif             | 
+|:------------------------------:|
+| ![](https://github.com/alirzadev/klime/blob/master/screenshots/klime.gif) | 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
