@@ -223,7 +223,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'klimë v0.0.1',
+                            'klimë v1.0.1',
                             style: TextStyle(
                               color: AppColors.white.withOpacity(.25),
                               fontSize: 12,
