@@ -1,3 +1,4 @@
+import 'package:date_util/date_util.dart';
 import 'package:flutter/material.dart';
 import 'package:klime/model/weekly_forecat_model.dart';
 
@@ -13,6 +14,9 @@ class WeeklyForecastList extends StatefulWidget {
 }
 
 class _WeeklyForecastListState extends State<WeeklyForecastList> {
+  int daysInMonth =
+      DateUtil().daysInMonth(DateTime.now().month, DateTime.now().year);
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -43,7 +47,7 @@ class _WeeklyForecastListState extends State<WeeklyForecastList> {
                       Text(
                         index == 0
                             ? 'Tomorrow ${widget.list[index].day}, ${widget.list[index].date.toInt()} ${compareMonth(month)}'
-                            : '${widget.list[index].day}, ${widget.list[index].date.toInt()} ${compareMonth(month)}',
+                            : '${widget.list[index].day}, ${widget.list[index].date.toInt() % daysInMonth} ${compareMonth(month)}',
                         style: TextStyle(
                           color: AppColors.white,
                           // fontSize: 16,

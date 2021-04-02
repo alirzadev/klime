@@ -11,12 +11,12 @@ class WeeklyForecastModel {
   WeeklyForecastModel({this.date, this.day, this.dayTemp, this.nightTemp});
 
   Future<List<WeeklyForecastModel>> getWeeklyForecast() async {
-    Location location = Location();
+    MyLocation location = MyLocation();
     // await location.getLocation();
 
     NetworkHelper networkHelper = NetworkHelper(
-      longitude: Location.longitude,
-      latitude: Location.latitude,
+      longitude: MyLocation.longitude,
+      latitude: MyLocation.latitude,
     );
 
     Response response;

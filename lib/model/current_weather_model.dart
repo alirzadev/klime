@@ -25,7 +25,7 @@ class CurrentWeatherModel {
 
   Future<CurrentWeatherModel> getCurrentWeather() async {
     // if (await GetStorage().getValues() == null) {
-    Location location = Location();
+    MyLocation location = MyLocation();
     // await location.getLocation();
     // GetStorage().write('lon', location.longitude);
     // GetStorage().write('lat', location.latitude);
@@ -35,8 +35,8 @@ class CurrentWeatherModel {
     // final longitude = GetStorage().read('lat');
     // print('$latitude===============$longitude');
     NetworkHelper networkHelper = NetworkHelper(
-      longitude: Location.longitude,
-      latitude: Location.latitude,
+      longitude: MyLocation.longitude,
+      latitude: MyLocation.latitude,
     );
 
     Response response;
